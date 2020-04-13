@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Housie-Conductor</title>
+	<script type="text/javascript" src="..\jQuery.js"></script>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="script_conductor.js"></script>
+	<link rel="stylesheet" type="text/css" href="common.css">
+
+	<!-- <script type="text/javascript" src="data.js"></script> -->
+	<style>
+		.ButtonContainer
+		{
+			text-align: center;
+		}
+
+		.GeneratedNumberHistory,.RunningNumber
+		{
+			display: table;
+			margin: auto;	
+			padding-top: 30px
+		}
+
+		.RunningNumber h1{
+			font-size: 8em;
+    		margin-top: 0px;
+		}
+
+		.GeneratedNumberHistory td{
+			font-size: 1.27em;
+		}
+
+		.generated
+		{
+			background-color: lightgreen;
+		}
+
+	</style>
+</head>
+<body onload="onBodyLoad()">
+<div class="ButtonContainer">
+	<input type="button" value="Generate Number" onclick="GenerateNumber()"></input>
+</div>
+<div class="RunningNumber">
+<h1></h1>
+<span></span>
+</div>
+<div class="GeneratedNumberHistory">
+
+</div>
+</body>
+</html>
