@@ -24,6 +24,9 @@ function addEventListeners()
 }
 
 
+
+
+
 function GenerateTicket()
 {
     init();
@@ -96,14 +99,30 @@ function AddDataToTable(tdElems, ticketData){
 
 totalTicketsGenerated = 0;
 
-function shareTicketClicked(event)
+function shareTicketClicked(ticketContainer)
 {
 	// console.log(event.target)
-	let ticketContainer = event.target.parentElement;
-	let ticketNumber = Number(ticketsGenerated.getAttribute("ticketNumber"))
+	// let ticketContainer = event.target.parentElement;
+	let ticketNumber = Number(ticketContainer.getAttribute("ticketnumber"))
 
+	
+	// console.log(ticketNumber)
 
-	// console.log(ticketsGenerated.getAttribute("ticketNumber"))
+	ticketData = deets.ticketsGenerated[ticketNumber - 1];
+
+	// console.table(ticketData)
+
+	salted = addSalt(ticketData);
+
+	// retURL = "http://localhost:1111/housie/player.html?" + salted;
+	retURL =  window.location.href  + "player.html?" + salted;
+
+	// console.log(retURL)
+
+	let anchorElem = document.querySelectorAll('.ticketContainer>a')[ticketNumber - 1];
+	anchorElem.href = retURL;
+	// anchorElem.innerText = retURL; 
+	anchorElem.innerText = 'click to launch'
 }
 
 function AddTicketOnScreen()
@@ -117,18 +136,23 @@ function AddTicketOnScreen()
 
     AddDataToTable(ticketContainer.querySelectorAll('td'), data);
 
+	let shareLink = document.createElement('a');
+	shareLink.target = "_blank";
+	// ticketContainer.append(shareLink)
+	ticketContainer.prepend(shareLink)
 	
-	
-	let shareTicketButton = document.createElement('input');
+	/* let shareTicketButton = document.createElement('input');
 	shareTicketButton.type = "button";
 	shareTicketButton.value = "Share";
 	shareTicketButton.onclick = shareTicketClicked;
-	ticketContainer.prepend(shareTicketButton);
+	ticketContainer.prepend(shareTicketButton); */
 
 	let ticketHeader = document.createElement('h1');
 	ticketHeader.contentEditable = true;
     ticketHeader.innerText = 'Player ' + String(totalTicketsGenerated);
 	ticketContainer.prepend(ticketHeader);
+
+	shareTicketClicked(ticketContainer);
 
 }
 
@@ -195,3 +219,62 @@ function addToData()
 {
 	deets.ticketsGenerated.push(data);
 }
+
+
+/* salting start */
+
+function getXY(num){
+    let X = Math.floor(num/10);
+    let Y = Math.floor(num%10);
+    return [X, Y];
+}
+
+xPass = "THUNDERLIG".split("");
+yPass = "HTN".split("");
+
+function getCodeFor(param)
+{
+    let val = param.split(":")[0];
+    let arrXY = getXY(param.split(":")[1]);
+    
+    let strRet = "";
+
+    let strXPass = xPass[arrXY[1]];
+	let strYPass = yPass[arrXY[0]];
+	let unitVal = val%10;
+	
+	strRet = strXPass + strYPass + unitVal;
+	
+	return strRet;
+
+}
+
+
+
+
+function addSalt(paramData)
+{
+	let a, b, c, d; 
+	a = paramData.toLocaleString()
+	b = a.split(",");
+	c = [];
+	for (var i=0; i<b.length; i++)
+	{
+		if (b[i].length > 0)
+		{
+			c.push(String(b[i]) + ":" + String(i))
+		}
+	}
+	
+	d = "";
+	for (var i=0; i<c.length; i++)
+	{
+		d += getCodeFor(c[i]);
+	}
+	
+	//console.log(d);
+	return d;
+}
+
+
+/* salting end */

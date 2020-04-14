@@ -9,10 +9,7 @@ function onBodyLoad()
     })
 }
 
-// from utils
 
-
-//end of code from utils
 let arrGeneratedNumbers = [];
 
 function GenerateNumber()
