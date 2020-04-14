@@ -89,7 +89,10 @@ function AddDataToTable(tdElems, ticketData){
     a = tdElems;
     for (var i=0; i<a.length; i++){
     //        console.log(a[i])
-    	a[i].innerText = dd[i];
+		a[i].innerText = dd[i];
+		if(dd[i]){
+			a[i].classList.add('content');
+		}
     }
 
 }
