@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Housie</title>
-	<script type="text/javascript" src="..\jQuery.js"></script>
+	<script type="text/javascript" src="jQuery.js"></script>
 	<script type="text/javascript" src="utils.js"></script>
 	<script type="text/javascript" src="loader.js"></script>
 	<link rel="stylesheet" type="text/css" href="common.css">
@@ -16,15 +16,28 @@
     		display: table;
 		}
 
+		.numberFound
+		{
+			background-color: lightgreen;
+		}
+
+		.hasNumber
+		{
+			cursor: pointer;
+		}
 
     </style>
 </head>
 <body onload="onBodyLoad()">
 <div class="ButtonContainer">
-    <textarea autofocus>
 
-    </textarea>
-	<input type="button" value="Load Ticket" onclick="abc()"></input>
 </div>
+
+<audio id="sound">
+	<!-- <source src="music.ogg" type="audio/ogg"> -->
+	<!-- <source src="sound/one.mp3" type="audio/mpeg"> -->
+	<source src="sound/two.mp3" type="audio/mpeg">
+	
+	</audio>
 </body>
 </html>

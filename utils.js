@@ -7,7 +7,10 @@ function getRandomNumberBetween(min, max)
 	return b;
 }
 
-
+function getURLData(){
+   
+    return window.location.href.substr(window.location.href.indexOf("?") + 1);
+}
 
 function UniqueRandomBetween(min, max, numUnique, arrNotThese){
 	if (arrNotThese === undefined) {arrNotThese = []}
