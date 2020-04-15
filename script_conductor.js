@@ -22,16 +22,23 @@ function GenerateNumber()
 
     $('td')[runningNumber].classList.add('generated');
 
-
+    saveNumberToFile(runningNumber)
 }
 
 data = [];
 
-function init()
+function saveNumberToFile(nRunningNumber)
 {	
-	data = [];
-	rows = [0, 0, 0];
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
+	jQuery.ajax({
+		type: "POST",
+		url: 'writesfile.php',
+        data :{hNumber: nRunningNumber},
+	
+		success: function (obj, textstatus) {
+            console.log("saved");
+            
+        }
+	});
 }
+
+

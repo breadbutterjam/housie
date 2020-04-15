@@ -26,11 +26,26 @@
 			cursor: pointer;
 		}
 
+		.NumberContainer{
+			text-align: center;
+			padding-bottom: 60px;
+			padding-top: 20px;
+			
+		}
+		h1{
+
+			font-size: 6em;
+    		margin-top: 0px;
+		}
+
     </style>
 </head>
 <body onload="onBodyLoad()">
-<div class="ButtonContainer">
-
+<div class="NumberContainer">
+	<h1>00</h1>
+</div>
+<div class="buttonContainer">
+	<input type="button" value="load new number" onclick="getNewNumber()">
 </div>
 
 <audio id="sound">

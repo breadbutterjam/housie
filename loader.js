@@ -83,6 +83,37 @@ function abc()
     AddDataToTable(ticketContainer.querySelectorAll('td'), ticketData);
 }
 
+function getNewNumber()
+{
+	let newNumber = -1;
+    jQuery.ajax({
+		type: "POST",
+		url: 'readfile.php',
+		// dataType: 'json',
+		// data: {functionname: 'add', arguments: [1, 2]},
+		// data: {hNumber: 31},
+		
+		data: 42,
+	
+		success: function (obj, textstatus) {
+					// console.log("we have lift OFF", obj);
+					newNumber = Number(obj)
+					console.log({newNumber})
+					document.querySelector('h1').innerText = newNumber;
+					// return newNumber;
+					// console.log({obj}, textstatus)
+					//   if( !('error' in obj) ) {
+					// 	  yourVariable = obj.result;
+						  
+					//   }
+					//   else {
+					// 	  console.log(obj.error);
+					//   }
+				}
+	});
+}
+
+
 /* removing salt start */
 
 xPass = "THUNDERLIG".split("");
