@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Housie</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="homepage.js"></script>
+	<link rel="stylesheet" type="text/css" href="common.css">
+	<!-- <script type="text/javascript" src="data.js"></script> -->
+	<style>
+
+		.ticketContainer
+		{
+			padding-bottom: 100px;
+			padding-top: 50px;
+			margin: auto;
+    		display: table;
+		}
+
+		.ticketContainer a{
+			float: right;
+    		line-height: 2em;
+		}
+
+		.GeneratedValues td{
+			background-color: #f3f3f3;
+		}
+
+		h1{
+			width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+		}
+
+		.playerDetailsContainer h1{
+			border: 1px solid #222;
+			border-radius: 4px;
+			margin-top: 8px;
+			margin-bottom: 0px;
+		}
+
+		.ButtonContainer{
+			text-align: center;
+            padding-top: 40px;
+		}
+
+        .DontShow,.DontShowOnStart{
+            display: none;
+		}
+		
+
+		.GeneratedNumberHistory,.RunningNumber
+		{
+			display: table;
+			margin: auto;	
+			padding-top: 30px
+		}
+
+		.generated
+		{
+			background-color: lightgreen;
+		}
+
+		.RunningNumber h1{
+			font-size: 8em;
+    		margin-top: 0px;
+		}
+
+
+		.RunningNumber{
+			text-align: center;
+		}
+
+		.CNG_CTA_container input{
+			margin-left: 30px;
+			margin-right: 30px;
+			margin-top: 20px;
+		}
+
+		.playerDetailsContainer span{
+			font-family: monospace;
+		}
+
+		.conductor_player_decision_container{
+			margin-top: 20px;
+		}
+		.conductor_player_decision_container label{
+			margin-right: 40px;
+		}
+    </style>
+</head>
+<body onload="onBodyLoad()" style="font-family: open-sans;">
+<div class="ButtonContainer initialSelection">
+	<input type="button" value="Create new game" autofocus onclick="createNewGameControls()"></input>
+	<input type="button" value="Join existing game" onclick="joinGameControls()"></input>
+</div>
+
+<div class="ButtonContainer NewGame DontShowOnStart">
+	<div class="playerDetailsContainer">
+		<!-- <label >Player Name</label> -->
+		<h1 class="gameName" contenteditable="true">untitled game</h1>
+		<h1 class="playerName" contenteditable="true">Player 1</h1>
+		<span class="newGameID">game_id: 127</span>
+	</div>
+	<div class="conductor_player_decision_container">
+		<input type="radio" checked id="both" name="CnP" value="Both">
+		<label for="both">Both Conductor and Player</label>
+<!-- 		<input type="radio" id="COnly" name="CnP" value="COnly">
+		<label for="COnly">Conductor Only</label> -->
+		<input type="radio" id="POnly" name="CnP" value="POnly">
+		<label for="POnly">Player Only</label>
+	  
+	</div>
+    <div class="CNG_CTA_container">
+		<input type="button" value="Cancel" onclick="cancelGame()"></input>
+		<input type="button" value="Create Game" onclick="createNewGame()"></input>
+		
+		<!-- <input type="button" value="I will conduct the game" onclick="Conductor()"></input> -->
+		<!-- <input type="button" value="I'm only playing" onclick="JustPlaying()"></input> -->
+
+	</div>
+    
+</div>
+
+<div class="ButtonContainer JoinGame DontShowOnStart"></div>
+	
+</div>
+
+<div class="ticketContainer DontShowOnStart">
+	
+</div>
+
+<div class="ButtonContainer NumberGenerator DontShowOnStart">
+	<input type="button" value="Generate Number" onclick="GenerateNumber()"></input>
+</div>
+
+<div class="RunningNumber">
+	<h1></h1>
+	<span></span>
+</div>
+<div class="GeneratedNumberHistory">
+
+</div>
+
+</body>
+</html>

@@ -11,18 +11,24 @@ function init()
 {	
 	data = [];
 	rows = [0, 0, 0];
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
-	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
 
-	addEventListeners();
+
+	for (var j=0; j<3; j++)
+	{
+		t=[];
+		for (var i=0; i<9; i++)
+		{
+			t.push(-1);	
+		}
+
+		data.push(t)
+	}
+
+	/* data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
+	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1])
+	data.push([-1, -1, -1, -1, -1, -1, -1, -1, -1, -1]) */
+
 }
-
-function addEventListeners()
-{
-	// $('h1').on("click", ticketHeaderClicked)
-}
-
 
 
 
@@ -34,7 +40,7 @@ function GenerateTicket()
 	for (var i=0; i<=1; i++)
 	{
 		//fill indices for first and second row
-		xIndices = UniqueRandomBetween(0, 9, 5);
+		xIndices = UniqueRandomBetween(0, 8, 5);
 		// console.log(xIndices)
 		
 		for (k=0; k<5; k++){
@@ -47,7 +53,7 @@ function GenerateTicket()
 	
 	//
 	emptyCols = [];
-	for (i=0; i<10; i++)
+	for (i=0; i<9; i++)
 	{
 		p = data[0][i] + data[1][i] + data[2][i]
 		if (typeof(p) === "number")
@@ -60,7 +66,7 @@ function GenerateTicket()
 	
 	pendingNums = 5 - emptyCols.length;
 	
-	pendingIndices = UniqueRandomBetween(0, 9, pendingNums, emptyCols)
+	pendingIndices = UniqueRandomBetween(0, 8, pendingNums, emptyCols)
 	for (i=0; i<emptyCols.length; i++)
 	{
 		data[2][emptyCols[i]] = "A";
@@ -73,7 +79,7 @@ function GenerateTicket()
 	
 	// prntData();
 		
-	for (i=0; i<10; i++){
+	for (i=0; i<9; i++){
 		FillNumberIn(i);
 	}	
 	
@@ -118,7 +124,14 @@ function shareTicketClicked(ticketContainer)
 	salted = addSalt(ticketData);
 
 	// retURL = "http://localhost:1111/housie/player.html?" + salted;
-	retURL =  window.location.href  + "player.html?" + salted;
+	let baseLocation = window.location.href.replace('index.html', '');
+	if (baseLocation.indexOf("?") > 0)
+	{
+		baseLocation = baseLocation.substr(0, baseLocation.indexOf('?'));
+	}
+	
+
+	retURL =  baseLocation  + "player.html?" + salted;
 
 	// console.log(retURL)
 
@@ -134,7 +147,7 @@ function AddTicketOnScreen()
 	ticketContainer.classList.add('ticketContainer');
 	ticketContainer.classList.add('ticketNumber' + String(totalTicketsGenerated));
 	ticketContainer.setAttribute("ticketNumber", totalTicketsGenerated)
-    ticketContainer.innerHTML = giveTableHTML(3, 10)
+    ticketContainer.innerHTML = giveTableHTML(3, 9)
     document.body.append(ticketContainer);
 
     AddDataToTable(ticketContainer.querySelectorAll('td'), data);
@@ -188,7 +201,7 @@ function FillNumberIn(xIndex)
 
 function CleanData()
 {
-	for (var xIndex=0; xIndex<10; xIndex++)
+	for (var xIndex=0; xIndex<9; xIndex++)
 	{
 		for (var yIndex=0; yIndex<3; yIndex++)
 		{
@@ -227,13 +240,13 @@ function addToData()
 /* salting start */
 
 function getXY(num){
-    let X = Math.floor(num/10);
-    let Y = Math.floor(num%10);
+    let X = Math.floor(num/9);
+    let Y = Math.floor(num%9);
     return [X, Y];
 }
 
-xPass = "THUNDERLIG".split("");
-yPass = "HTN".split("");
+xPass = "THUNDERLI".split("");
+yPass = "GHT".split("");
 
 function getCodeFor(param)
 {
@@ -259,7 +272,13 @@ function addSalt(paramData)
 {
 	let a, b, c, d; 
 	a = paramData.toLocaleString()
+
+	console.log("a", a)
+
 	b = a.split(",");
+
+	console.log("b", b)
+
 	c = [];
 	for (var i=0; i<b.length; i++)
 	{
@@ -269,12 +288,18 @@ function addSalt(paramData)
 		}
 	}
 	
+	console.log("c", c)
+
+
 	d = "";
 	for (var i=0; i<c.length; i++)
 	{
 		d += getCodeFor(c[i]);
 	}
 	
+	console.log("d", d)
+
+
 	//console.log(d);
 	return d;
 }

@@ -9,9 +9,15 @@
 
 	<!-- <script type="text/javascript" src="data.js"></script> -->
 	<style>
+		.progressIndicator{
+			width: 0%;
+			height: 10px;
+			background-color: lightsteelblue;
+		}
 		.ButtonContainer
 		{
 			text-align: center;
+			padding-top: 10px;
 		}
 
 		.GeneratedNumberHistory,.RunningNumber
@@ -38,8 +44,11 @@
 	</style>
 </head>
 <body onload="onBodyLoad()">
+	<div class="progressIndicator"></div>
 <div class="ButtonContainer">
+	<input type="button" value="Auto Generate" onclick="AutoGenerateNumber()"></input>
 	<input type="button" value="Generate Number" onclick="GenerateNumber()"></input>
+	<input type="button" value="Start over" onclick="ResetAll()"></input>
 </div>
 <div class="RunningNumber">
 <h1></h1>

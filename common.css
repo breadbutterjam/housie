@@ -8,7 +8,7 @@ td{
     font-size: 2.7em;
     text-align: center;
     min-width: 1.27em;
-    background-color: #dcdcdc;
+    /* background-color: #dcdcdc; */
 }
 
 td.content{

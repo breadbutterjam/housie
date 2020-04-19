@@ -9,7 +9,16 @@ function getRandomNumberBetween(min, max)
 
 function getURLData(){
    
-    return window.location.href.substr(window.location.href.indexOf("?") + 1);
+    let retData = "";
+    if (window.location.href.indexOf("?") > -1)
+    {
+        retData = window.location.href.substr(window.location.href.indexOf("?") + 1);
+    }
+    else
+    {
+        retData = ""
+    }
+    return retData;
 }
 
 function UniqueRandomBetween(min, max, numUnique, arrNotThese){
@@ -29,6 +38,22 @@ function UniqueRandomBetween(min, max, numUnique, arrNotThese){
     return cc;
 }
 
+function getSortedArray(param, bDesc)
+{
+    let ret = Array.from(param)
+
+    if (bDesc)
+    {
+        ret.sort((a,b)=>b-a)
+    }
+    else
+    {
+        ret.sort((a,b)=>a-b)
+    }
+    
+    return ret;
+
+}
 
 function giveTableHTML(rows, cols, tableId)
 {

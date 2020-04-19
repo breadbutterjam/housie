@@ -5,13 +5,16 @@
 	<script type="text/javascript" src="jQuery.js"></script>
 	<script type="text/javascript" src="utils.js"></script>
 	<script type="text/javascript" src="loader.js"></script>
+	<script type="text/javascript" src="GenerateTicket.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="common.css">
 	<!-- <script type="text/javascript" src="data.js"></script> -->
 	<style>
 
-		.ticketContainer
+		.ticketContainer,.generatedNumberHistoryTable
 		{
-			padding-bottom: 100px;
+			/* padding-bottom: 100px; */
+			padding-bottom: 20px;
 			margin: auto;
     		display: table;
 		}
@@ -21,6 +24,10 @@
 			background-color: lightgreen;
 		}
 
+		.numberGenerated{
+			background-color: lightgrey;
+		}
+
 		.hasNumber
 		{
 			cursor: pointer;
@@ -28,8 +35,19 @@
 
 		.NumberContainer{
 			text-align: center;
-			padding-bottom: 60px;
-			padding-top: 20px;
+			/* padding-bottom: 60px; */
+			/* padding-top: 20px; */
+			/* border: 1px solid; */
+
+			display: block;
+			width: fit-content;
+			margin: auto;
+			background-color: #C0ffee;
+			padding-bottom: 20px;
+			margin-bottom: 40px;
+			padding-left: 40px;
+			padding-right: 40px;
+			border-radius: 5px;
 			
 		}
 		h1{
@@ -38,20 +56,42 @@
     		margin-top: 0px;
 		}
 
+		.ticketContainer table{
+			margin: auto;
+		}
+
+
+		.generatedNumberHistory{
+			font-size: 1.72em;
+			background-color: lightgrey;
+			margin-top: 16px;
+			padding: 8px;
+		}
+
+		.generatedNumberHistoryTable td{
+			font-size: 1.27em;
+		}
     </style>
 </head>
 <body onload="onBodyLoad()">
 <div class="NumberContainer">
-	<h1>00</h1>
-	<input type="button" value="load new number" onclick="getNewNumber()">
+	<h1></h1>
+	<!-- <input type="button" value="load new number" onclick="getNewNumber()"> -->
 </div>
+<div class="ticketContainer"></div>
 
+<div class="generateNumberHistoryContainer">
+	<div class="generatedNumberHistory">
+	</div>
+	<div class="generatedNumberHistoryTable">
+	</div>
+</div>
 
 <audio id="sound">
 	<!-- <source src="music.ogg" type="audio/ogg"> -->
 	<!-- <source src="sound/one.mp3" type="audio/mpeg"> -->
 	<source src="sound/two.mp3" type="audio/mpeg">
 	
-	</audio>
+</audio>
 </body>
 </html>
