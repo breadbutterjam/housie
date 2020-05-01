@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Housie</title>
+
+    <style>
+        .initialButtons,.conductorButtons
+        {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 40px;
+            min-width: 127px;
+        }
+
+        .initialSelection,.conductorButtonContainer{
+            margin: auto;
+            /* width: 50%; */
+            padding-top: 10vh;
+            text-align: center;
+        }
+
+        .conductorButtonContainer{
+            padding-top: 0vh;
+        }
+
+        .gameContainer
+        {
+            display: none;
+        }
+
+        .GeneratedNumberHistory td{
+            font-size: 1.27em;
+            padding-bottom: 10px;
+            padding-top: 10px;
+		}
+
+        .GeneratedNumberHistory,.RunningNumber{
+            display: table;
+            margin: auto;
+            padding: 30px;
+            padding-top: 0px;
+        }
+
+        .RunningNumber {
+            padding-bottom: 0px;
+        }
+
+        td{
+
+            border: 1px solid #8c8c8c;
+            padding: 16px;
+            font-size: 2.7em;
+            text-align: center;
+            min-width: 1.27em;
+            /* background-color: #dcdcdc; */
+            }
+
+
+        .RunningNumber h1{
+            font-size: 8em;
+            margin-top: 0px;
+        }
+
+        .generated
+		{
+			background-color: lightgreen;
+        }
+        
+        .gameIDCont{
+            position: absolute;
+            right: 10px;
+            top: 0px;
+            display: flex;
+        }
+
+        .gameIDLabel,.copyGameID{
+            font-size: small;
+        }
+
+        .gameIDVal{
+            font-weight: bold;
+            font-family: monospace;
+            font-size: large;
+        }
+    </style>
+</head>
+<body onload="onBodyLoad()">
+    <!-- <button id="btnNewGame" type="button" class="btn btn-outline-primary">New game</button> -->
+    <div class="ButtonContainer initialSelection">
+        <!-- <input type="button" value="Create new game" autofocus onclick="createNewGameControls()"></input>
+        <input type="button" value="Join existing game" onclick="joinGameControls()"></input> -->
+        <button id="btnNewGame" type="button" class="btn btn-outline-primary initialButtons">New game</button>
+        <button id="btnJoinGame" type="button" class="btn btn-outline-primary initialButtons">Join game</button>
+    </div>
+
+    <div class="gameContainer newGame conductorView">
+        <div class="topBand">
+            <div class="gameIDCont">
+                <div class="gameIDLabel">Game ID</div>
+                <div class="gameIDVal">ABC_123_123</div>
+                <!-- <div class="copyGameID">copy game ID</div> -->
+                <!-- <a href="#" class="copyGameID">copy game ID</a> -->
+            </div>
+            <div class="buttonContainer conductorButtonContainer">
+                <button id="btnAutoGen" type="button" class="btn btn-outline-primary conductorButtons">Auto Generate</button>
+                <button id="btnGenerateNumber" type="button" class="btn btn-outline-primary conductorButtons">Generate Number</button>
+                <button id="btnGenerateTicket" type="button" class="btn btn-outline-primary conductorButtons">Generate Ticket</button>
+                <button id="btnStartOver" type="button" class="btn btn-outline-primary conductorButtons">Start Over</button>
+                <button id="btnBack" type="button" class="btn btn-outline-primary conductorButtons">Back</button>
+            </div>
+        </div>
+        <div class="RunningNumber"><h1>--</h1></div>
+        <div class="GeneratedNumberHistory">
+
+        </div>
+        <div class="buttonContainer">
+            <!-- button to generate ticket -->
+        </div>
+        <div class="playerTicketContainers">
+            <!-- will house all ticket containers for various players 
+                
+                <div class="ticketContainer"></div> 
+            -->
+        </div>
+    </div>
+    <div class="gameContainer joinGame playerView">
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="utils.js"></script>
+    <script src="homepage2.js"></script>
+</body>
+</html>

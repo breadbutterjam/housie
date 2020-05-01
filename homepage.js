@@ -113,6 +113,8 @@ function createNewGame(){
 
     addToAllData(oPlayerDeets, oGameDeets, oTicketdeets);
 
+    
+
 /* ticketDeetsTemplate = {
     tId: -1,
     ticketData: "",
