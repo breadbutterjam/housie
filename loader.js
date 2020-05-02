@@ -81,7 +81,7 @@ let ticketData = "";
 
 function abc(urlParam)
 {
-	debugger;
+	//debugger;
     /* ticketData = $('textarea')[0].value.trim()
 
     let ticketContainer = document.createElement('div');

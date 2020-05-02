@@ -16,7 +16,7 @@
             min-width: 127px;
         }
 
-        .initialSelection,.conductorButtonContainer{
+        .initialSelection,.conductorButtonContainer, .playerButtonContainer{
             margin: auto;
             /* width: 50%; */
             padding-top: 10vh;
@@ -27,6 +27,9 @@
             padding-top: 0vh;
         }
 
+        .playerButtonContainer{
+            padding-top: 5vh;
+        }
         .gameContainer
         {
             display: none;
@@ -128,7 +131,31 @@
         </div>
     </div>
     <div class="gameContainer joinGame playerView">
+        <div class="topBand">
+            <div class="gameIDCont">
+                <div class="gameIDLabel">Game ID</div>
+                <div class="gameIDVal">ABC_123_123</div>
+                <!-- <div class="copyGameID">copy game ID</div> -->
+                <!-- <a href="#" class="copyGameID">copy game ID</a> -->
+            </div>
+            <div class="buttonContainer playerButtonContainer">
+                <!-- <button id="btnAutoGen" type="button" class="btn btn-outline-primary conductorButtons">Auto Generate</button> -->
+                <!-- <button id="btnGenerateNumber" type="button" class="btn btn-outline-primary conductorButtons">Generate Number</button> -->
+                <!-- <button id="btnGenerateTicket" type="button" class="btn btn-outline-primary conductorButtons">Generate Ticket</button> -->
+                <!-- <button id="btnStartOver" type="button" class="btn btn-outline-primary conductorButtons">Start Over</button> -->
+                <button id="btnBackJoinGame" type="button" class="btn btn-outline-primary playerButtons">Back</button>
+            </div>
+        </div>
+        <div class="RunningNumber"><h1>--</h1></div>
+        <div class="playerTicketContainers">
+            <!-- will house the player's ticket containers 
+                
+                <div class="ticketContainer"></div> 
+            -->
+        </div>
+        <div class="GeneratedNumberHistory">
 
+        </div>
     </div>
 
 

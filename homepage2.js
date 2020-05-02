@@ -6,11 +6,42 @@ function onBodyLoad()
 
 function addEventListeners()
 {
-    $("#btnNewGame").on("click", newGameClicked)
-    $("#btnBack").on("click", newGameBackClicked)
-    $("#btnGenerateNumber").on("click", GenerateNumber)
+    $("#btnNewGame").on("click", newGameClicked);
+	$("#btnBack").on("click", newGameBackClicked);
+	$("#btnBackJoinGame").on("click", joinGameBackClicked);
+
+	$("#btnJoinGame").on("click", joinGameButtonClicked);
+
+
+    $("#btnGenerateNumber").on("click", GenerateNumber);
 
     $("#btnGenerateTicket").on("click", GenerateTicket);
+}
+
+function joinGameButtonClicked(event)
+{
+
+
+
+	//hide initial selection panel
+	$(".initialSelection").hide();
+
+	//show game container, conductor view
+	$('.playerView').show();
+
+
+	//initialize the GeneratedNumberHistory table in player view
+	$('.playerView>.GeneratedNumberHistory').html(giveTableHTML(10,9));
+
+	initGeneratedNumberTable(Array.from($('.playerView>.GeneratedNumberHistory td')));
+
+
+	let cE = document.querySelector('.playerView > .playerTicketContainers');
+	GenerateTicketData();
+	AddTicketOnScreen(cE);
+	// <div class=​"playerTicketContainers">​…​</div>​
+	
+
 }
 
 function newGameClicked(event)
@@ -25,11 +56,19 @@ function newGameClicked(event)
 
 
     //generate generated number history table
-    $('.GeneratedNumberHistory').html(giveTableHTML(10,9));
-    Array.from($('td')).forEach(function(elem, ind){
-            elem.innerText = ind;
-        })
+    // $('.GeneratedNumberHistory').html(giveTableHTML(10,9));
+	$('.conductorView>.GeneratedNumberHistory').html(giveTableHTML(10,9));
 
+	initGeneratedNumberTable(Array.from($('.conductorView>.GeneratedNumberHistory td')));
+
+}
+
+
+function initGeneratedNumberTable(arrTds)
+{
+	arrTds.forEach(function(elem, ind){
+		elem.innerText = ind + 1;
+	})
 }
 
 function newGameBackClicked(event)
@@ -39,6 +78,15 @@ function newGameBackClicked(event)
 
     //show game container, conductor view
     $('.conductorView').hide();
+}
+
+function joinGameBackClicked(event)
+{
+	//hide initial selection panel
+    $(".initialSelection").show();
+
+    //show game container, conductor view
+    $('.playerView').hide();
 }
 
 function hideAllSections()
@@ -56,7 +104,7 @@ function GenerateNumber()
 
     $('.RunningNumber h1').text(runningNumber);
 
-    $('td')[runningNumber].classList.add('generated');
+    $('td')[runningNumber-1].classList.add('generated');
 }
 
 /* TICKET GENERATION CODE STARTS */
@@ -74,7 +122,10 @@ function GenerateTicket()
     
     g_totalTicketsGenerated++;
 
-    AddTicketOnScreen();
+
+	//playerTicketContainers
+	let contElem = document.querySelector('.conductorView> .playerTicketContainers');
+    AddTicketOnScreen(contElem);
 
 }
 
@@ -192,7 +243,7 @@ function CleanData()
 }
 
 
-function AddTicketOnScreen()
+function AddTicketOnScreen(parentElem)
 {
     let ticketContainer = document.createElement('div');
 	ticketContainer.classList.add('ticketContainer' + String(g_totalTicketsGenerated));
@@ -200,8 +251,10 @@ function AddTicketOnScreen()
 	ticketContainer.setAttribute("ticketNumber", g_totalTicketsGenerated)
     ticketContainer.innerHTML = giveTableHTML(3, 9)
     
-    // document.body.append(ticketContainer);
-    document.querySelector('.playerTicketContainers').append(ticketContainer);
+	// document.body.append(ticketContainer);
+
+	parentElem.append(ticketContainer);
+    // document.querySelector('.playerTicketContainers').append(ticketContainer);
 
     AddDataToTable(ticketContainer.querySelectorAll('td'), g_data);
 
