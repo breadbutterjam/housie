@@ -89,6 +89,28 @@
             font-family: monospace;
             font-size: large;
         }
+
+        .actualGameContainer{
+            display: none;
+        }
+
+        .gameIdInputContainer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .OneemTopPadding{
+            margin-top: 1em;
+        }
+
+        .JoinGameButtonContainer
+        {
+            display: flex;
+            flex-direction: row;
+        }
+
     </style>
 </head>
 <body onload="onBodyLoad()">
@@ -131,30 +153,45 @@
         </div>
     </div>
     <div class="gameContainer joinGame playerView">
-        <div class="topBand">
-            <div class="gameIDCont">
-                <div class="gameIDLabel">Game ID</div>
-                <div class="gameIDVal">ABC_123_123</div>
-                <!-- <div class="copyGameID">copy game ID</div> -->
-                <!-- <a href="#" class="copyGameID">copy game ID</a> -->
-            </div>
-            <div class="buttonContainer playerButtonContainer">
-                <!-- <button id="btnAutoGen" type="button" class="btn btn-outline-primary conductorButtons">Auto Generate</button> -->
-                <!-- <button id="btnGenerateNumber" type="button" class="btn btn-outline-primary conductorButtons">Generate Number</button> -->
-                <!-- <button id="btnGenerateTicket" type="button" class="btn btn-outline-primary conductorButtons">Generate Ticket</button> -->
-                <!-- <button id="btnStartOver" type="button" class="btn btn-outline-primary conductorButtons">Start Over</button> -->
-                <button id="btnBackJoinGame" type="button" class="btn btn-outline-primary playerButtons">Back</button>
+        <div class="gameIdInputContainer">
+            <!--  <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"> -->
+            <label class="OneemTopPadding" for="gameIDUserInput">Game ID</label>
+            <input id="gameIDUserInput" class="form-control col-3" type="text" placeholder="Enter game id to join">
+            <div class="JoinGameButtonContainer">
+                <!-- <input type="button" value="Create new game" autofocus onclick="createNewGameControls()"></input>
+                <input type="button" value="Join existing game" onclick="joinGameControls()"></input> -->
+                <button id="btnCancelJoin" type="button" class="btn btn-outline-primary initialButtons">Back</button>
+                <button id="btnJoinGameId" type="button" class="btn btn-outline-primary initialButtons">Join game</button>
             </div>
         </div>
-        <div class="RunningNumber"><h1>--</h1></div>
-        <div class="playerTicketContainers">
-            <!-- will house the player's ticket containers 
-                
-                <div class="ticketContainer"></div> 
-            -->
-        </div>
-        <div class="GeneratedNumberHistory">
 
+        <div class="actualGameContainer">
+            <div class="topBand">
+                <div class="gameIDCont">
+                    <div class="gameIDLabel">Game ID</div>
+                    <div class="gameIDVal">ABC_123_123</div>
+                    <!-- <div class="copyGameID">copy game ID</div> -->
+                    <!-- <a href="#" class="copyGameID">copy game ID</a> -->
+                </div>
+                <div class="buttonContainer playerButtonContainer">
+                    <!-- <button id="btnAutoGen" type="button" class="btn btn-outline-primary conductorButtons">Auto Generate</button> -->
+                    <!-- <button id="btnGenerateNumber" type="button" class="btn btn-outline-primary conductorButtons">Generate Number</button> -->
+                    <!-- <button id="btnGenerateTicket" type="button" class="btn btn-outline-primary conductorButtons">Generate Ticket</button> -->
+                    <!-- <button id="btnStartOver" type="button" class="btn btn-outline-primary conductorButtons">Start Over</button> -->
+                    <button id="btnBackJoinGame" type="button" class="btn btn-outline-primary playerButtons">Back</button>
+                </div>
+            </div>
+            <div class="RunningNumber"><h1>--</h1></div>
+            <div class="playerTicketContainers">
+                <!-- will house the player's ticket containers 
+                    
+                    <div class="ticketContainer"></div> 
+                -->
+            </div>
+            <div class="GeneratedNumberHistory">
+    
+            </div>
         </div>
     </div>
 

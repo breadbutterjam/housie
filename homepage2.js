@@ -1,3 +1,11 @@
+
+/* 
+
+TO-DOS:
+
+
+*/
+
 function onBodyLoad()
 {
     // alert("A")
@@ -15,7 +23,11 @@ function addEventListeners()
 
     $("#btnGenerateNumber").on("click", GenerateNumber);
 
-    $("#btnGenerateTicket").on("click", GenerateTicket);
+	$("#btnGenerateTicket").on("click", GenerateTicket);
+	
+	$("#btnCancelJoin").on("click", joinGameBackClicked)
+
+	$("#btnJoinGameId").on("click", joinGameIdClicked)
 }
 
 function joinGameButtonClicked(event)
@@ -30,18 +42,30 @@ function joinGameButtonClicked(event)
 	$('.playerView').show();
 
 
+}
+
+function joinGameIdClicked()
+{
+	let strGameID = $("#gameIDUserInput").val();
+
+	$('.gameIdInputContainer').hide();
+
+	initJoinGame();
+
+	$('.actualGameContainer').show();
+}
+
+function initJoinGame(){
 	//initialize the GeneratedNumberHistory table in player view
 	$('.playerView>.GeneratedNumberHistory').html(giveTableHTML(10,9));
 
 	initGeneratedNumberTable(Array.from($('.playerView>.GeneratedNumberHistory td')));
 
 
-	let cE = document.querySelector('.playerView > .playerTicketContainers');
+	let cE = document.querySelector('.playerView .playerTicketContainers');
 	GenerateTicketData();
 	AddTicketOnScreen(cE);
 	// <div class=​"playerTicketContainers">​…​</div>​
-	
-
 }
 
 function newGameClicked(event)
@@ -86,7 +110,12 @@ function joinGameBackClicked(event)
     $(".initialSelection").show();
 
     //show game container, conductor view
-    $('.playerView').hide();
+	
+	$('.gameIdInputContainer').show();
+	$('.actualGameContainer').hide();
+	$('.playerView').hide();
+	
+
 }
 
 function hideAllSections()
